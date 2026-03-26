@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Omkar R. Deshmukh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        :root {
+            --bg-color: #080808;
+            --main-color: #ff0000; 
+            --text-color: white;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            overflow-y: auto; 
+            position: relative;
+        }
+
+        /* --- Absolute Navigation Bar --- */
+        header {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 10%;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--main-color);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-left: 2.5rem;
+            transition: 0.4s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--main-color);
+            text-shadow: 0 0 15px var(--main-color);
+        }
+
+        /* --- Projects Layout --- */
+        .projects {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns content to top */
+            min-height: 100vh;
+            gap: 5rem; 
+            padding: 10rem 10% 5rem; 
+        }
+
+        .projects-content {
+            flex: 1;
+            animation: fadeInLeft 1.5s ease;
+        }
+
+        .heading {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .heading span {
+            color: var(--main-color);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .project-box {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid #222;
+            transition: 0.5s;
+        }
+
+        .project-box:hover {
+            border-color: var(--main-color);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .project-box i {
+            font-size: 2.5rem;
+            color: var(--main-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-box p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* --- LARGE Standing Oval Image (Shifted Upside) --- */
+        .projects-image {
+            margin-top: 0; /* Removed margin to shift up */
+            position: sticky; /* Keeps it visible while scrolling through cards */
+            top: 10rem;
+        }
+
+        .projects-image img {
+            width: 420px; 
+            height: 600px; 
+            object-fit: cover;
+            border-radius: 210px / 300px; 
+            border: 5px solid var(--main-color);
+            box-shadow: none;
+            animation: fadeInRight 1.8s ease;
+        }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--main-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            z-index: 1000;
+        }
+
+        #backToTop.show { opacity: 1; visibility: visible; }
+
+        /* --- Animations --- */
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 1200px) {
+            .projects { flex-direction: column; text-align: center; align-items: center; }
+            .project-grid { grid-template-columns: 1fr; }
+            .projects-image { position: relative; top: 0; order: -1; margin-bottom: 3rem; }
+            .projects-image img { width: 300px; height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class='logo'>PORTFOLIO</a>
+        <nav>
+            <a href="index.html">Home</a> 
+            <a href="about.html">About me</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html" class="active">Project</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="projects">
+        <div class="projects-content">
+            <h2 class="heading">My <span>Work</span></h2>
+            
+            <div class="project-grid">
+                <div class="project-box">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Full Stack Application</h3>
+                    <p>A complete MERN stack web application featuring secure user authentication and dynamic REST API integration.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <h3>Authentication Pages</h3>
+                    <p>Designed clean and responsive Login/Sign-up systems with real-time form validation and error handling.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-desktop"></i>
+                    <h3>Web Design Layouts</h3>
+                    <p>Creative dark-mode UI designs focusing on modern grid systems and premium aesthetic appeal.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-address-card"></i>
+                    <h3>Personal Portfolio</h3>
+                    <p>A fully responsive multi-page portfolio website showcasing professional skills and high-quality projects.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <h3>Weather App UI</h3>
+                    <p>A sleek interface for weather updates featuring glassmorphism and animated background icons.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>To-Do List</h3>
+                    <p>A functional task management tool with local storage features to maintain daily productivity records.</p>
+                </div>
+
+                <div class="project-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>Landing Pages</h3>
+                    <p>High-conversion business solutions with smooth scrolling and highly interactive header sections.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-image">
+            <img src="1.jpg" alt="Omkar Projects Upside">
+        </div>
+    </section>
+
+    <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const btn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 300) { btn.classList.add("show"); }
+            else { btn.classList.remove("show"); }
+        };
+        btn.addEventListener("click", () => { window.scrollTo({top: 0, behavior: "smooth"}); });
+    </script>
+</body>
+</html>

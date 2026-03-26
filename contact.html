@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Omkar R. Deshmukh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        :root {
+            --bg-color: #080808;
+            --main-color: #ff0000; 
+            --text-color: white;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            overflow-y: auto; 
+            position: relative;
+        }
+
+        /* --- Absolute Navigation Bar --- */
+        header {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 10%;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--main-color);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-left: 2.5rem;
+            transition: 0.4s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--main-color);
+            text-shadow: 0 0 15px var(--main-color);
+        }
+
+        /* --- Contact Layout --- */
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            gap: 5rem; 
+            padding: 10rem 10% 5rem;
+        }
+
+        .contact-content {
+            flex: 1;
+            animation: fadeInLeft 1.5s ease;
+        }
+
+        .heading {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .heading span {
+            color: var(--main-color);
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+        }
+
+        .input-box {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-box input, .contact-form textarea {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-color);
+            background: #111;
+            border-radius: 10px;
+            border: 2px solid #222;
+            margin: 0.8rem 0;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .input-box input:focus, .contact-form textarea:focus {
+            border-color: var(--main-color);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+        }
+
+        .input-box input {
+            width: 49%;
+        }
+
+        .contact-form textarea {
+            resize: none;
+            height: 200px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            background: var(--main-color);
+            border-radius: 40px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: 0.5s ease;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: var(--main-color);
+            color: var(--main-color);
+            box-shadow: 0 0 15px var(--main-color);
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            border: 2px solid var(--main-color);
+            font-size: 1.5rem;
+            border-radius: 50%;
+            color: var(--main-color);
+            margin-right: 1.5rem;
+            transition: 0.5s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--main-color);
+            color: white;
+            box-shadow: 0 0 15px var(--main-color);
+            transform: translateY(-5px);
+        }
+
+        /* --- LARGE Standing Oval Image (Shifted Upside) --- */
+        .contact-image {
+            margin-top: 0;
+            position: sticky;
+            top: 10rem;
+        }
+
+        .contact-image img {
+            width: 420px; 
+            height: 600px; 
+            object-fit: cover;
+            border-radius: 210px / 300px; 
+            border: 5px solid var(--main-color);
+            animation: fadeInRight 1.8s ease;
+        }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--main-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            z-index: 1000;
+        }
+
+        #backToTop.show { opacity: 1; visibility: visible; }
+
+        /* --- Animations --- */
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 1200px) {
+            .contact { flex-direction: column; text-align: center; align-items: center; }
+            .input-box input { width: 100%; }
+            .contact-image { position: relative; top: 0; order: -1; margin-bottom: 3rem; }
+            .contact-image img { width: 300px; height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class='logo'>PORTFOLIO</a>
+        <nav>
+            <a href="index.html">Home</a> 
+            <a href="about.html">About me</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Project</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <div class="contact-content">
+            <h2 class="heading">Contact <span>Me!</span></h2>
+            
+            <form action="#" class="contact-form">
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="input-box">
+                    <input type="number" placeholder="Mobile Number">
+                    <input type="text" placeholder="Email Subject">
+                </div>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="contact-image">
+            <img src="1.jpg" alt="Omkar Contact Image">
+        </div>
+    </section>
+
+    <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const btn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 300) { btn.classList.add("show"); }
+            else { btn.classList.remove("show"); }
+        };
+        btn.addEventListener("click", () => { window.scrollTo({top: 0, behavior: "smooth"}); });
+    </script>
+</body>
+</html>
